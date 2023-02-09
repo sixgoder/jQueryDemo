@@ -59,12 +59,20 @@
 	</body>
 	<script src="jquery-3.6.3.js"></script>
 	<script type="text/javascript">
+		var currentIndex = 0;
 		var $containers = $('#container>div')
 		$('#tab>li').click(function() {
 			var index = $(this).index()
-			$containers.css('display', 'none')
+
+			// $containers.css('display', 'none')
+			$containers[currentIndex].style.display = 'none'
+
+			// 效率更高
 			$containers[index].style.display = 'block'
+			// $($containers[index]).css('display', 'block')
 			$containers[index].style.backgroundColor = Color()
+
+			currentIndex = index
 		})
 
 		//颜色对象
