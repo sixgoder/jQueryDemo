@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		table {
+			width: 500px;
+			height: 140px;
+			margin: 5px;
+			/* background-color: #aaa; */
+			border: lightgray 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			border-spacing: 0px;
+		}
+
+		thead {
+			width: 55px;
+			height: 30px;
+			background-color: darkblue;
+			font-size: 12px;
+		}
+
+		td,
+		th {
+			border: lightgray 1px solid;
+		}
+
+		th {
+			color: white;
+			font-size: 17px;
+		}
+	</style>
+	<body>
+		<table id="data">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>工资</th>
+					<th>入职时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Tom</td>
+					<td>$3500</td>
+					<td>2010-10-25</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Mary</td>
+					<td>$3400</td>
+					<td>2010-12-1</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>King</td>
+					<td>$5900</td>
+					<td>2010-10-1</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Scott</td>
+					<td>$3800</td>
+					<td>2010-09-1</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Smith</td>
+					<td>$3100</td>
+					<td>2014-01-27</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>Allen</td>
+					<td>$3700</td>
+					<td>2011-12-05</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+	<script src="jquery-3.6.3.js"></script>
+	<script type="text/javascript">
+		$('#data>tbody>tr:odd').css('background-color', '#ccccff')
+	</script>
+</html>
