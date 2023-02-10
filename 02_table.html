@@ -35,6 +35,10 @@
 			color: white;
 			font-size: 17px;
 		}
+
+		.odd {
+			background-color: aquamarine;
+		}
 	</style>
 	<body>
 		<table id="data">
@@ -88,6 +92,8 @@
 	</body>
 	<script src="jquery-3.6.3.js"></script>
 	<script type="text/javascript">
-		$('#data>tbody>tr:odd').css('background-color', '#ccccff')
+		// $('#data>tbody>tr:odd').css('background-color', '#ccccff')
+		// $('#data>tbody>tr:odd').addClass('odd')
+		$('#data>tbody>tr:odd').attr('class', 'odd')
 	</script>
 </html>
