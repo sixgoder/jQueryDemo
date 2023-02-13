@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+
+	</head>
+
+	<body>
+		<table id="employeeTable">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Salary</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr>
+				<td>Tom</td>
+				<td>tom@tom.com</td>
+				<td>5000</td>
+				<td><a href="javascript:;">Delete</a></td>
+			</tr>
+			<tr>
+				<td>Jerry</td>
+				<td>Jerry@jerry.com</td>
+				<td>8000</td>
+				<td><a href="deleteEmp?id=002">Delete</a></td>
+			</tr>
+			<tr>
+				<td>Bob</td>
+				<td>Bob@bob.com</td>
+				<td>10000</td>
+				<td><a href="deleteEmp?id=003">Delete</a></td>
+			</tr>
+		</table>
+
+		<div id="formDiv">
+			<h4>add new employee</h4>
+
+			<table>
+				<tr>
+					<td class="word">name: </td>
+					<td class="inp">
+						<input type="text" name="empName" id="empName" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">email: </td>
+					<td class="inp">
+						<input type="text" name="email" id="email" />
+					</td>
+				</tr>
+				<tr>
+					<td class="word">salary: </td>
+					<td class="inp">
+						<input type="text" name="salary" id="salary" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button id="addEmpButton">
+							Submit
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+
+	<script src="jquery-3.6.3.js"></script>
+	<script type="text/javascript">
+		var delA = function() {
+
+			// var tr = this.parentNode.parentNode;
+			// var name = tr.children[0].innerHTML;
+
+			// var result = confirm("確認刪除" + name + "嗎?");
+			// if (result) {
+			//     tr.parentNode.removeChild(tr);
+			// }
+
+			// return false;
+
+			var $tr = $(this).parent().parent()
+			var $name = $tr.children(':first').html()
+			if (confirm('确定删除' + $name + '吗')) {
+				$tr.remove()
+			}
+			return false
+		}
+
+		// window.onload = function() {
+		// 	var allA = document.getElementsByTagName("a");
+		// 	for (var i = 0; i < allA.length; ++i) {
+		// 		allA[i].onclick = delA;
+		// 	}
+
+		// 	var submit = document.getElementById("addEmpButton");
+		// 	submit.onclick = function() {
+
+		// 		var name = document.getElementById("empName").value;
+		// 		var email = document.getElementById("email").value;
+		// 		var salary = document.getElementById("salary").value;
+
+		// 		var tr = document.createElement("tr");
+		// 		tr.innerHTML = "<td>" + name + "</td>" +
+		// 			"<td>" + email + "</td>" +
+		// 			"<td>" + salary + "</td>" +
+		// 			"<td><a href='javascript:;'>Delete</a></td>";
+
+		// 		var a = tr.getElementsByTagName("a")[0];
+		// 		a.onclick = delA;
+
+		// 		var table = document.getElementById("employeeTable");
+		// 		var tbody = table.getElementsByTagName("tbody")[0];
+		// 		tbody.appendChild(tr);
+		// 	}
+		// }
+		$('#addEmpButton').click(function() {
+			var $empName = $('#empName')
+			var $email = $('#email')
+			var $salary = $('#salary')
+			var empName = $empName.val()
+			var email = $email.val()
+			var salary = $salary.val()
+			$('<tr></tr>')
+				.append('<td>' + empName + '</td>')
+				.append('<td>' + email + '</td>')
+				.append('<td>' + salary + '</td>')
+				.append('<td><a href="javascript:;">Delete</a></td>')
+				.appendTo('#employeeTable>tbody')
+				.find('a').click(delA)
+
+			$empName.val('')
+			$email.val('')
+			$salary.val('')
+		})
+
+		$('#employeeTable a').click(delA)
+	</script>
+
+</html>
