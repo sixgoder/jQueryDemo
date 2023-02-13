@@ -133,14 +133,17 @@
 				.append('<td>' + salary + '</td>')
 				.append('<td><a href="javascript:;">Delete</a></td>')
 				.appendTo('#employeeTable>tbody')
-				.find('a').click(delA)
+			// .find('a').click(delA)
 
 			$empName.val('')
 			$email.val('')
 			$salary.val('')
 		})
 
-		$('#employeeTable a').click(delA)
+		// $('#employeeTable a').click(delA)
+
+		//委托实现删除
+		$('#employeeTable').delegate('a', 'click', delA)
 	</script>
 
 </html>
