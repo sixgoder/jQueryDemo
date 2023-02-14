@@ -43,7 +43,7 @@
 			}
 
 			#navDiv a {
-				background-color: red;
+				background-color: pink;
 				width: 15px;
 				height: 15px;
 				float: left;
@@ -55,66 +55,9 @@
 			}
 
 			#navDiv a:hover {
-				background-color: yellow;
+				background-color: hotpink;
 			}
 		</style>
-		<!-- 		<script src="tools.js"></script>
-		<script type="text/javascript">
-			window.onload = function() {
-				var imgList = document.getElementById("imgList");
-				var navDiv = document.getElementById("navDiv");
-				var outer = document.getElementById("outer");
-
-				var imgs = imgList.getElementsByTagName("img");
-				var allA = navDiv.getElementsByTagName("a");
-
-				var index = 0;
-				var timer;
-
-				imgList.style.width = 520 * imgs.length + "px";
-				navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
-				allA[index].style.backgroundColor = "black";
-
-				for (var i = 0; i < allA.length; ++i) {
-					allA[i].num = i;
-					allA[i].onclick = function() {
-						clearInterval(timer);
-						index = this.num;
-						// imgList.style.left = -520 * index + "px";
-						move(imgList, "left", -520 * index, 30, function() {
-							autoChange();
-						});
-						resetA();
-					};
-				}
-
-				function resetA() {
-
-					if (index >= imgs.length - 1) {
-						index = 0;
-						imgList.style.left = 0;
-					}
-
-					for (var i = 0; i < allA.length; ++i) {
-						allA[i].style.backgroundColor = "";
-					}
-					allA[index].style.backgroundColor = "black";
-				}
-
-				autoChange();
-
-				function autoChange() {
-					timer = setInterval(function() {
-						index++;
-						index = index % imgs.length;
-						move(imgList, "left", -520 * index, 30, function() {
-							resetA();
-						});
-					}, 1000);
-				}
-
-			};
-		</script> -->
 	</head>
 	<body>
 		<div id="outer">
@@ -122,8 +65,8 @@
 				<li><img src="./imgs/1.jpeg" alt=""></li>
 				<li><img src="./imgs/2.jpeg" alt=""></li>
 				<li><img src="./imgs/3.jpeg" alt=""></li>
-				<!-- 		<li><img src="./imgs/4.jpeg" alt=""></li>
-				<li><img src="./imgs/5.jpeg" alt=""></li> -->
+				<li><img src="./imgs/4.jpeg" alt=""></li>
+				<li><img src="./imgs/5.jpeg" alt=""></li>
 				<li><img src="./imgs/1.jpeg" alt=""></li>
 			</ul>
 			<div id="navDiv">

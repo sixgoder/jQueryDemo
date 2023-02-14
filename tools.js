@@ -6,53 +6,66 @@ $(function() {
 	var $allA = $('a')
 
 	var index = 0
+	var timer
 	var PAGE_WIDTH = 520
-	var TIME = 400
+	var TIME = 1000
 	var INTERVAL = 20
 
 	$imgList.css('width', PAGE_WIDTH * $imgs.length)
 	var x = $outer.offset().left
 	var y = $navDiv.offset().left
 	$navDiv.css('left', ($outer.width() - $navDiv.width()) / 2)
-	// $allA.css('background', 'black')
 
 	$allA.each(function(i) {
 		this.i = i
 	})
 
 	$navDiv.delegate('a', 'click', function() {
-		if (index != this.i) {
-			index = this.i
-			updatePage()
-		}
+		index = this.i
+		clearInterval(timer)
+		updatePage($imgList, autoPage)
+		resetA()
 	})
 
-	setInterval(function() {
-		console.log(index)
-		updatePage(function() {
-			if (index >= $imgs.length - 1) {
-				index = 0;
-				imgList.style.left = 0;
-			}
-		})
-		index++
-		index %= $imgs.length
-	}, 1000)
+	function autoPage() {
+		timer = setInterval(function() {
+			index++
+			index %= $imgs.length
+			updatePage($imgList, function() {
+				resetA()
+			})
+		}, TIME)
+	}
+	autoPage()
 
-	function updatePage(callback) {
+	function resetA() {
+		if (index >= $imgs.length - 1) {
+			index = 0;
+			$imgList.css('left', 0)
+		}
+		$allA.css('background', '')
+		$($allA[index]).css('background', 'hotpink')
+	}
+
+	function updatePage(obj, callback) {
+		clearInterval(obj.timer)
+		var target = index * -PAGE_WIDTH
 		var currLeft = $imgList.position().left
-		var i = Math.abs(index - (currLeft / PAGE_WIDTH))
-		var offset = -PAGE_WIDTH * Math.ceil(i)
-		var itemOffset = offset / (TIME / INTERVAL)
-		var target = currLeft + offset
+		var offset = target - currLeft
+		var itemOffset = offset / INTERVAL
+		var isLeft = target > currLeft
 
-
-		var intervalId = setInterval(function() {
+		obj.timer = setInterval(function() {
 			currLeft += itemOffset
 			$imgList.css('left', currLeft)
 
-			if (currLeft === target) {
-				clearInterval(intervalId)
+			//越界判断很重要
+			if ((isLeft && currLeft >= target) || (!isLeft && currLeft <= target)) {
+				currLeft = target;
+			}
+
+			if (currLeft == target) {
+				clearInterval(obj.timer)
 				callback && callback()
 			}
 		}, INTERVAL)
