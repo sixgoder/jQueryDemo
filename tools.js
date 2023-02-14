@@ -10,6 +10,7 @@ $(function() {
 	var PAGE_WIDTH = 520
 	var TIME = 1000
 	var INTERVAL = 20
+	var moving = false
 
 	$imgList.css('width', PAGE_WIDTH * $imgs.length)
 	var x = $outer.offset().left
@@ -25,6 +26,12 @@ $(function() {
 		clearInterval(timer)
 		updatePage($imgList, autoPage)
 		resetA()
+	})
+
+	$outer.hover(function() {
+		clearInterval(timer)
+	}, function() {
+		autoPage()
 	})
 
 	function autoPage() {
@@ -43,11 +50,19 @@ $(function() {
 			index = 0;
 			$imgList.css('left', 0)
 		}
-		$allA.css('background', '')
-		$($allA[index]).css('background', 'hotpink')
+		var lastIndex = index - 1
+		lastIndex = lastIndex < 0 ? $allA.length - 1 : lastIndex
+		// 有样式优先级问题 !important
+		// $allA.eq(lastIndex).removeClass('on')
+		$allA.removeClass('on')
+		$allA.eq(index).addClass('on')
 	}
 
 	function updatePage(obj, callback) {
+		if (moving) {
+			return
+		}
+		moving = true
 		clearInterval(obj.timer)
 		var target = index * -PAGE_WIDTH
 		var currLeft = $imgList.position().left
@@ -65,6 +80,7 @@ $(function() {
 			}
 
 			if (currLeft == target) {
+				moving = false
 				clearInterval(obj.timer)
 				callback && callback()
 			}
