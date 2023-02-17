@@ -37,27 +37,37 @@ body img {
 .container .imgcontainer .scontainer .next {
   width: 20px;
   height: 74px;
-  margin: 5px 0;
   border: 2px solid lightblue;
 }
-.container .imgcontainer .scontainer .simgs {
+.container .imgcontainer .scontainer .simgsContainer {
   width: 240px;
   height: 70px;
-  background-color: green;
-  margin-top: 5px;
   overflow: hidden;
-  display: flex;
-  flex-flow: row nowrap;
+  background-color: red;
+  position: relative;
 }
-.container .imgcontainer .scontainer .simgs a img {
+.container .imgcontainer .scontainer .simgsContainer ul {
+  width: 380px;
+  height: 100%;
+  list-style: none;
+  position: absolute;
+}
+.container .imgcontainer .scontainer .simgsContainer ul li {
+  float: left;
+}
+.container .imgcontainer .scontainer .simgsContainer ul li img {
   border: 2px solid rgba(255, 255, 255, 0.7);
-  flex-shrink: 0;
   width: 70px;
   height: 70px;
 }
 .container .limg {
   width: 280px;
   height: 280px;
-  background-color: blue;
+  overflow: hidden;
+}
+.container .limg img {
+  width: 560px;
+  height: 400px;
+  object-fit: contain;
 }
 /*# sourceMappingURL=./myless.css.map */
