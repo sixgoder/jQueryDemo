@@ -17,7 +17,7 @@
 
 	//jQuery方法扩展
 	$.fn.extend({
-		: function() {
+		checkAll: function() {
 			this.prop('checked', true)
 		},
 		unCheckAll: function() {
