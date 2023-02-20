@@ -14,9 +14,8 @@ body{
 }
 
 .container{
-	width: 600px;
-	height: 300px;
-	background-color: aquamarine;
+	width: 640px;
+	height: 400px;
 	margin: 50px auto;
     display: flex;
     flex-flow: row wrap;
@@ -24,32 +23,43 @@ body{
     align-content: space-evenly;
 
     .imgcontainer{
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 380px;
 
         .mimg{
-            width: 100%;
-            height: 200px;
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            position: relative;
             img{
                 width: 100%;
                 height: 100%;
+                position: absolute;
+            }
+
+            .mask{
+                width: 100px;
+                height: 100px;
+                background-color: rgba(100, 100, 100, 0.3);
+                position: absolute;
+                display: none;
             }
         }
-
         .scontainer {
             display: flex;
             flex-flow: row nowrap;
             .prev, .next{
                 width: 20px;
-                height: 74px;
+                height: 70px;
                 border: 2px solid lightblue;
+                margin-top: 3px;
             }
             .simgsContainer{
-                width: 240px;
+                width: 260px;
                 height: 70px;
                 overflow: hidden;
-                background-color: red;
                 position: relative;
+                margin-top: 3px;
                 ul{
                     width: 370px;
                     height: 100%;
@@ -69,14 +79,15 @@ body{
     }
 
     .limg{
-        width: 280px;
-        height: 280px;
-        // background-color: blue;
+        width: 300px;
+        height: 300px;
         overflow: hidden;
+        position: relative;
         img {
-            width: 280 * 2px;
-            height: 200 * 2px;
-            object-fit: contain;
+            width: 600px;
+            height: 600px;
+            object-fit: cover;
+            position: absolute;
         }
     }
 
